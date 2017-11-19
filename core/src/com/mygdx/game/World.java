@@ -11,7 +11,7 @@ public class World {
         
         maze = new Maze();
  
-        pacman = new Pacman(60,60);
+        pacman = new Pacman(60, 60, maze);
     }
  
     Pacman getPacman() {
