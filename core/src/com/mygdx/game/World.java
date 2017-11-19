@@ -5,13 +5,15 @@ public class World {
     private PacmanGame pacmanGame;
     
     private Maze maze;
+    
+    private int score;
  
     World(PacmanGame pacmanGame) {
         this.pacmanGame = pacmanGame;
         
         maze = new Maze();
  
-        pacman = new Pacman(60, 60, maze);
+        pacman = new Pacman(60, 60, this);
     }
  
     Pacman getPacman() {
@@ -20,6 +22,15 @@ public class World {
     
     Maze getMaze() {
     	return maze;
+    }
+    
+    //Count Score
+    
+    public void increaseScore() {
+    	score += 1;
+    }
+    public int getScore() {
+    	return score;
     }
     
     public void update(float delta) {
