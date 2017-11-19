@@ -19,12 +19,16 @@ public class GameScreen extends ScreenAdapter {
 	 
 	 World world;
 	 
+	 WorldRenderer worldRenderer;
+	 
 	    public GameScreen(PacmanGame pacmanGame) {
 	        this.pacmanGame = pacmanGame;
 	        
 	        pacmanImg = new Texture("pacman.png");
 	        
 	        world = new World(pacmanGame);
+	        
+	        worldRenderer = new WorldRenderer(this.pacmanGame, world);
 	    }
 	    
 	    @Override
@@ -34,11 +38,7 @@ public class GameScreen extends ScreenAdapter {
 	        
 	        update(delta);
 	        
-	    	SpriteBatch batch = pacmanGame.batch;
-	        batch.begin();
-	        Vector2 pos = world.getPacman().getPosition();
-	        batch.draw(pacmanImg, pos.x, pos.y);
-	        batch.end();
+	        worldRenderer.render(delta);   	
 	    }
 	    
 	    private void update(float delta) {
