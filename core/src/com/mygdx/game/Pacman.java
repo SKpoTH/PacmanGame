@@ -71,6 +71,10 @@ public class Pacman {
     		} else {
     			currentDirection = DIRECTION_STILL;
     		}
+    		if(this.maze.hasDotAt(getRow(), getColumn())) {
+    			this.maze.removeDotAt(getRow(), getColumn());
+    		}
+
     	}
     	position.x += SPEED * DIR_OFFSETS[currentDirection][0];
         position.y += SPEED * DIR_OFFSETS[currentDirection][1];
