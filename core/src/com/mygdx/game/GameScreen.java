@@ -42,17 +42,23 @@ public class GameScreen extends ScreenAdapter {
 	    }
 	    
 	    private void update(float delta) {
+	    	updatePacmanDirection();
+	    	
+	    	world.update(delta);
+	    }
+	    private void updatePacmanDirection() {
+	    	Pacman pacman = world.getPacman();
+	    	
 	    	if(Gdx.input.isKeyPressed(Keys.UP)) {
-	    		world.getPacman().move(Pacman.DIRECTION_UP);
-	        }
-	    	if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-	            world.getPacman().move(Pacman.DIRECTION_DOWN);
-	        }
-	    	if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-	    		world.getPacman().move(Pacman.DIRECTION_LEFT);
-	        }
-	    	if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-	    		world.getPacman().move(Pacman.DIRECTION_RIGHT);
+	    		pacman.setNextDirection(Pacman.DIRECTION_UP);
+	        } else if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+	    		pacman.setNextDirection(Pacman.DIRECTION_DOWN);
+	        } else if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+	    		pacman.setNextDirection(Pacman.DIRECTION_LEFT);
+	        } else if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+	    		pacman.setNextDirection(Pacman.DIRECTION_RIGHT);
+	        } else {
+	        	pacman.setNextDirection(Pacman.DIRECTION_STILL);
 	        }
 	    }
 }

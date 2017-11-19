@@ -11,7 +11,7 @@ public class World {
         
         maze = new Maze();
  
-        pacman = new Pacman(100,100);
+        pacman = new Pacman(60,60);
     }
  
     Pacman getPacman() {
@@ -20,5 +20,9 @@ public class World {
     
     Maze getMaze() {
     	return maze;
+    }
+    
+    public void update(float delta) {
+    	pacman.update();
     }
 }
